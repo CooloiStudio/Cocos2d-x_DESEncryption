@@ -1,0 +1,27 @@
+#ifndef cooloi_des_h
+#define cooloi_des_h
+
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <openssl/des.h>
+#include <string.h>
+
+class CooloiDES
+{
+public:
+	CooloiDES();
+	~CooloiDES();
+	std::string Encrypt(std::string msg);
+	std::string Decrypt(std::string msg);
+private:
+	DES_cblock cb1 = { 0x2C, 0x7A, 0x0E, 0x98, 0xF1, 0xE0, 0x76, 0x49 };
+	DES_cblock cb2 = { 0x73, 0x15, 0xCD, 0x25, 0xE0, 0xB5, 0x43, 0xCB };
+	DES_cblock cb3 = { 0x2C, 0x7A, 0x0E, 0x98, 0xF1, 0xE0, 0x76, 0x49 };
+
+	DES_key_schedule ks1,ks2,ks3;
+
+	DES_cblock cblock = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+};
+
+#endif
